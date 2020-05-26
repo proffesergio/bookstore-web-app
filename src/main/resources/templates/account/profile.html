@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div class="page-top fixed-top"></div>
+<div th:replace="common/header :: navbar"/>
+
+<body>
+<div class="container">
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg"
+                         class="img-responsive" alt="">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Username
+                    </div>
+                    <div class="profile-usertitle-job">
+                        Developer
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn btn-sm">Follow</button>
+                    <button type="button" class="btn btn-danger btn-sm">Message</button>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="glyphicon glyphicon-home"> Overview </i></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="glyphicon glyphicon-user"> Account Settings</i></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="glyphicon glyphicon-ok"> Tasks</i></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="glyphicon glyphicon-flag"> Account Settings</i></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MENU -->
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="profile-content">
+                <div class="row">
+                    <!--                    col-xs-8-->
+                    <div class="col-12" style="align-content: center">
+                        <h2 class="section-headline">
+                            <span th:text="${#strings.toUpperCase{user.username}}"></span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-12 col-offset-3">
+
+                        <!--                        Nav Tabs-->
+                        <ul class="nav nav-tabs">
+                            <li th:classappend="${classActiveEdit}? 'active'" class="nav-item">
+                                <a class="nav-link active" href="#tab-1" data-toggle="tab">
+                                    <span style="color: #007bff">Edit Profile</span></a>
+                            </li>
+                            <li th:classappend="${classActiveOrders}? 'active'" class="nav-item">
+                                <a class="nav-link" href="#tab-2" data-toggle="tab">
+                                    <span style="color: #007bff">Orders</span></a>
+                            </li>
+                            <li th:classappend="${classActiveBilling}? 'active'" class="nav-item">
+                                <a class="nav-link" href="#tab-3" data-toggle="tab">
+                                    <span style="color: #007bff">Billing</span></a>
+                            </li>
+                            <li th:classappend="${classActiveShipping}? 'active'" class="nav-item">
+                                <a class="nav-link" href="#tab-4" data-toggle="tab">
+                                    <span style="color: #007bff">Shipping</span></a>
+                            </li>
+                        </ul>
+
+                        <!--Tab panels-->
+                        <!--User Profile Edit Panel-->
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane fade" th:classappend="${classActiveEdit}? 'in active'">
+                                <div class="panel-group">
+                                    <div class="panel panel-default" style="border: none;">
+                                        <div class="panel-body text-center">
+                                            <form th:action="@{/updateUserInfo}" method="post" style="margin-top: 15px;">
+                                                <input type="hidden" name="id" th:value="${user.id}">
+
+                                                <div class="bg-info" th:if="${updateUserInfo}">User info updated!</div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+
+                                                        <div class="col-xl-6">
+                                                            <label for="firstName">FirstName</label>
+                                                            <input type="text" class="form-control" id="firstName" name="firstName" th:value="${user.firstName}" />
+                                                        </div>
+
+                                                        <div class="col-xl-6">
+                                                            <label for="lastName">Last Name</label>
+                                                            <input type="text" class="form-control" id="lastName" name="lastName" th:value="${user.lastName}" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="username">Username</label>
+                                                    <input type="text" class="form-control" id="username" name="username" th:value="${user.username}" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="currentPassword">Current Password</label>
+                                                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" th:value="${currentPassword}">
+                                                </div>
+                                                <p class="alert-info">Enter current password to modify or change your email / password.</p>
+
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="text" class="form-control" id="email" name="currentPassword" th:value="${user.email}">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="newPassText">New Password</label>
+                                                    <input type="password" class="form-control" id="newPassText" name="newPassText">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="confirmPassText">New Password</label>
+                                                    <input type="password" class="form-control" id="confirmPassText">
+                                                </div>
+
+                                                <button type="submit" class="btn-dark">Update</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Login panel-->
+                            <div id="tab-2" class="tab-pane fade active" th:classappend="${classActiveLogin}? 'in active'">
+                                <div class="panel-group">
+                                    <div class="panel panel-default" style="border: none;">
+                                        <div class="panel-body text-center my-auto">
+                                            <form class="d-inline-block" style="margin-top: 10px;">
+                                                <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
+                                                <h1 class="h3 mb-3 font-weight-normal my-3">Please sign in</h1>
+                                                <label for="inputEmail" class="sr-only">Email address</label>
+                                                <input type="email" id="inputEmail" class="form-control my-3"
+                                                       placeholder="Email address" required autofocus>
+                                                <label for="inputPassword" class="sr-only my-2">Password</label>
+                                                <input type="password" id="inputPassword" class="form-control"
+                                                       placeholder="Password" required>
+                                                <div class="checkbox mb-3 my-3">
+                                                    <label>
+                                                        <input type="checkbox" value="remember-me"> Remember me
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="btn btn-secondary btn-lg btn-block my-3" style="width: 100%;">
+                                                    Login
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Recover Password panel-->
+                            <div id="tab-3" class="tab-pane fade" th:classappend="${classActiveRecoverPassword}? 'in active'">
+                                <div class="panel-group">
+                                    <div class="panel panel-default" style="border: none;">
+                                        <div class="panel-body text-center my-5">
+                                            <div class="input-group mb-3">
+                                                <input type="email" class="form-control" placeholder="Recipient's email" aria-label="Recipient's email" aria-describedby="button-addon2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Recover</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<div th:replace="common/header :: bottom-scripts"/>
+</body>
+</html>

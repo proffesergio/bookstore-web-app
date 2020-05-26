@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div class="page-top fixed-top"></div>
+<div th:replace="common/header :: navbar"/>
+
+<body>
+<div class="container">
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg"
+                         class="img-responsive" alt="">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Username
+                    </div>
+                    <div class="profile-usertitle-job">
+                        Developer
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn btn-sm">Follow</button>
+                    <button type="button" class="btn btn-danger btn-sm">Message</button>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="fa fa-home"> Overview </i></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="fa fa-user"> Account Settings</i></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="fa fa-book"> Books</i></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#"><span><i class="fa fa-flag"> Account Settings</i></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MENU -->
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="profile-content">
+                <div class="row">
+                    <!--                    col-xs-8-->
+                    <div class="col-12" style="align-content: center">
+                        <h2 class="section-headline">
+                            <span>User Account</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-12 col-offset-3">
+
+                        <!--                        Nav Tabs-->
+                        <ul class="nav nav-tabs">
+                            <li th:classappend="${classActiveRegistration}? 'active'" class="nav-item"><a
+                                    class="nav-link active" href="#tab-1" data-toggle="tab"><span
+                                    style="color: #007bff">Create New Account</span></a></li>
+                            <li th:classappend="${classActiveLogin}? 'active'" class="nav-item"><a class="nav-link"
+                                                                                                   href="#tab-2"
+                                                                                                   data-toggle="tab"><span
+                                    style="color: #007bff">Login</span></a></li>
+                            <li th:classappend="${classActiveRecoverPassword}? 'active'" class="nav-item"><a
+                                    class="nav-link" href="#tab-3" data-toggle="tab"><span
+                                    style="color: #007bff">Recover Password</span></a></li>
+                        </ul>
+
+                        <!--Tab panels-->
+                        <!--Create Account Panel-->
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane fade"
+                                 th:classappend="${classActiveRegistration}? 'in active'">
+                                <div class="panel-group">
+                                    <div class="panel panel-default" style="border: none;">
+                                        <div class="panel-body text-center">
+                                            <form style="margin-top: 15px;">
+                                                <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
+                                                <h1 class="h3 mb-3 font-weight-normal my-2">Create an account</h1>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="username">
+                                                            <small id="usernameHelp" class="form-text text-muted">Enter your username. eg: proffesergio</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <input type="email" class="form-control" id="email"
+                                                                   placeholder="Email address"
+                                                                   aria-describedby="emailHelp">
+                                                            <small id="emailHelp" class="form-text text-muted">eg:
+                                                                johnwick@gmail.com</small>
+                                                        </div>
+                                                        <!--<div class="col">
+                                                            <input type="tel" class="form-control" id="phone"
+                                                                   placeholder="Phone number"
+                                                                   aria-describedby="phone-help">
+                                                            <small id="phone-help" class="form-text text-muted">eg:
+                                                                0185421000</small>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <input type="password" placeholder="Choose password"
+                                                                   class="form-control" id="password1">
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="password" placeholder="Confirm password"
+                                                                   class="form-control" id="password2">
+                                                            <small id="passHel"
+                                                                   class="form-text text-muted btn-outline-danger">Make
+                                                                sure Password == Confirm Password!</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-check my-5">
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <label class="form-check-label" for="exampleCheck1">Agree
+                                                        Terms&Conditions Applied By Boot Store Community!</label>
+                                                </div>
+                                                <button type="submit" class="btn btn-secondary btn-lg btn-block my-5">
+                                                    Register
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Login panel-->
+                            <div id="tab-2" class="tab-pane fade active"
+                                 th:classappend="${classActiveLogin}? 'in active'">
+                                <div class="panel-group">
+                                    <div class="panel panel-default" style="border: none;">
+                                        <div class="panel-body text-center my-auto">
+                                            <form class="d-inline-block" style="margin-top: 10px;">
+                                                <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
+                                                <h1 class="h3 mb-3 font-weight-normal my-3">Please sign in</h1>
+                                                <label for="inputEmail" class="sr-only">Email address</label>
+                                                <input type="email" id="inputEmail" class="form-control my-3"
+                                                       placeholder="Email address" required autofocus>
+                                                <label for="inputPassword" class="sr-only my-2">Password</label>
+                                                <input type="password" id="inputPassword" class="form-control"
+                                                       placeholder="Password" required>
+                                                <div class="checkbox mb-3 my-3">
+                                                    <label>
+                                                        <input type="checkbox" value="remember-me"> Remember me
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="btn btn-secondary btn-lg btn-block my-3"
+                                                        style="width: 100%;">
+                                                    Login
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Recover Password panel-->
+                            <div id="tab-3" class="tab-pane fade"
+                                 th:classappend="${classActiveRecoverPassword}? 'in active'">
+                                <div class="panel-group">
+                                    <div class="panel panel-default" style="border: none;">
+                                        <div class="panel-body text-center my-5">
+                                            <div class="input-group mb-3">
+                                                <input type="email" class="form-control" placeholder="Recipient's email"
+                                                       aria-label="Recipient's email" aria-describedby="button-addon2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button"
+                                                            id="button-addon2">Recover
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<div th:replace="common/header :: bottom-scripts"/>
+</body>
+</html>
